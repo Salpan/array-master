@@ -12,15 +12,31 @@ const animals = ['Zebra', 'Lion', 'Elephant', 'Giraffe',[0, 1, 8]];
 const newAnimals = JSON.parse(JSON.stringify(animals));
 
 newAnimals.push('Turtle')
+newAnimals[4].push(4)
 
-console.log('New Animals', newAnimals)
-console.log('Animals', animals)
+// console.log('New Animals', newAnimals)
+// console.log('Animals', animals)
 
-const myAnimals = animals.map((item, index, array)=> {
+// const myAnimals = animals.map((item, index, array)=> {
+//     if (typeof item === 'string') {
+//         return item.toLowerCase()
+//     }
+//     return item
+// })
+
+// console.log(myAnimals) 
+
+
+const myAnimals = newAnimals.map((item, index, array, attak) => {
+    if (item === 'Lion') {return attak = true}
     if (typeof item === 'string') {
-        return item.toLowerCase()
+        return {
+            id: `${item.toUpperCase()}-${index}`,
+            name: item,
+            attantion: attak
+        }
     }
-    return item
+
 })
 
-console.log(myAnimals)
+console.log(myAnimals);
