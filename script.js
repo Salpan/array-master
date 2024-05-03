@@ -14,29 +14,63 @@ const newAnimals = JSON.parse(JSON.stringify(animals));
 newAnimals.push('Turtle')
 newAnimals[4].push(4)
 
+// console.log(myAnimals) 
+
+// const myAnimals = newAnimals.map((item, index, array) => {
+//     if (item === 'Lion') {return attak = true}
+//     attak = false
+//     if (typeof item === 'string'| item === 'Lion') {
+//         return {
+//             id: `${item.toUpperCase()}-${index}`,
+//             name: item,
+//             attantion: true
+//         }
+//     }
+//     return item;
+// })
+
+
+// const myAnimals = newAnimals.map((item, index, array) => {
+//     if (typeof item === 'string'| item === 'Lion') {
+//         return {
+//             id: `${item.toUpperCase()}-${index}`,
+//             name: item,
+//             attantion: true
+//         }}
+//         if (typeof item === 'string'| item === 'Lion') {
+//             return {
+//                 id: `${item.toUpperCase()}-${index}`,
+//                 name: item,
+//                 attantion: true
+//             }
+//     }
+//     return item;
+// })
+
 // console.log('New Animals', newAnimals)
 // console.log('Animals', animals)
 
-// const myAnimals = animals.map((item, index, array)=> {
-//     if (typeof item === 'string') {
-//         return item.toLowerCase()
-//     }
-//     return item
-// })
+// const onlyAnimals = animals.filter((item) => {
+//     return typeof item === 'string'
+// });
 
-// console.log(myAnimals) 
+// const myAnimals = onlyAnimals.map((item, index, array)=> {
+//         return {
+//             id: `${index+2}${item.toUpperCase()}${index}`,
+//             animal: item
+//     }});
 
+// console.log(myAnimals);
 
-const myAnimals = newAnimals.map((item, index, array, attak) => {
-    if (item === 'Lion') {return attak = true}
-    if (typeof item === 'string') {
+const onlyAnimals = animals
+    .filter((item) => {
+        return typeof item === 'string'
+    })
+    .map((item, index) => {
         return {
-            id: `${item.toUpperCase()}-${index}`,
-            name: item,
-            attantion: attak
+            id: `${index+2+item.toUpperCase()+index}`,
+            animal: item
         }
-    }
+    });
 
-})
-
-console.log(myAnimals);
+console.log(onlyAnimals);
