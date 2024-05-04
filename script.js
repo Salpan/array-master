@@ -1,76 +1,35 @@
-const animalsDiv = document.createElement('div');
-const root = document.getElementById('body');
+const list = ['Zebra', 'Lion', 'Elephant', 'Giraffe',[0, 1, 8]]
 
-animalsDiv.id = 'animals';
+const root = document.getElementById('root')
 
-root.append(animalsDiv);
+const newDiv = document.createElement('div')
+newDiv.id = 'newDiv'
 
-const animals = ['Zebra', 'Lion', 'Elephant', 'Giraffe',[0, 1, 8]];
+root.append(newDiv)
 
-// console.log(animals[1]); 
+const animalsList = list
+    .filter(
+        (item) => {
+            return typeof item === 'string'
+        })
+    .map(
+        (item, index) => {
+            return {
+                id: `#${index+1}${item.toUpperCase()}${index}`,
+                animal: item
+            }
+        });
 
-const newAnimals = JSON.parse(JSON.stringify(animals));
+console.log(animalsList)
 
-newAnimals.push('Turtle')
-newAnimals[4].push(4)
+const animalsOrderList = document.createElement('ul')
 
-// console.log(myAnimals) 
+animalsOrderList.id = 'animals-list'
 
-// const myAnimals = newAnimals.map((item, index, array) => {
-//     if (item === 'Lion') {return attak = true}
-//     attak = false
-//     if (typeof item === 'string'| item === 'Lion') {
-//         return {
-//             id: `${item.toUpperCase()}-${index}`,
-//             name: item,
-//             attantion: true
-//         }
-//     }
-//     return item;
-// })
+root.append(animalsOrderList)
 
-
-// const myAnimals = newAnimals.map((item, index, array) => {
-//     if (typeof item === 'string'| item === 'Lion') {
-//         return {
-//             id: `${item.toUpperCase()}-${index}`,
-//             name: item,
-//             attantion: true
-//         }}
-//         if (typeof item === 'string'| item === 'Lion') {
-//             return {
-//                 id: `${item.toUpperCase()}-${index}`,
-//                 name: item,
-//                 attantion: true
-//             }
-//     }
-//     return item;
-// })
-
-// console.log('New Animals', newAnimals)
-// console.log('Animals', animals)
-
-// const onlyAnimals = animals.filter((item) => {
-//     return typeof item === 'string'
-// });
-
-// const myAnimals = onlyAnimals.map((item, index, array)=> {
-//         return {
-//             id: `${index+2}${item.toUpperCase()}${index}`,
-//             animal: item
-//     }});
-
-// console.log(myAnimals);
-
-const onlyAnimals = animals
-    .filter((item) => {
-        return typeof item === 'string'
-    })
-    .map((item, index) => {
-        return {
-            id: `${index+2+item.toUpperCase()+index}`,
-            animal: item
-        }
-    });
-
-console.log(onlyAnimals);
+animalsList.forEach((animal) => {
+    const animalElement = document.createElement('li')
+    animalElement.textContent = animal.animal
+    animalsOrderList.append(animalElement)
+})
